@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private BannerAdView bav;
     private DTBAdRequest loader;
     private TextView myTextView;
+    private String mytext;
+    private int myn=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,37 +42,74 @@ public class MainActivity extends AppCompatActivity {
         AdRegistration.enableTesting(true);
         AdRegistration.enableLogging(true);
 
+        //Adnx Placement initialisieren
+        this.bav = new BannerAdView(this);
+        bav.setAutoRefreshInterval(0);
+        this.bav.setInventoryCodeAndMemberID(7823, "adtechnology.axelspringer.de-app-test-mediation_index-mrec");
+        bav.addCustomKeywords("test", "true");
+        this.bav.setAdSize(300, 250);
+        this.bav.setShouldServePSAs(true);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.my_adspot);
+        layout.addView(this.bav);
+
         loader = new DTBAdRequest();
         loader.setSizes(new DTBAdSize(300, 250,"63c4c4c6-1e0b-4666-b8cd-7994163e0552"));
+        loader.setAutoRefresh();
+        mytext = "My Awesome Failure ";
         loader.loadAd(new DTBAdCallback() {
             @Override
             public void onFailure(AdError adError) {
                 Log.e("AdError", "Oops banner ad load has failed: " + adError.getMessage());
                 /**Please implement the logic to send ad request without our parameters if you want to
                  show ads from other ad networks when Amazon ad request fails**/
-                myTextView.setText("My Awesome Failure"+ adError.getMessage());
+                myn++;
+                mytext = mytext + myn + adError.getMessage();
+                myTextView.setText(mytext);
 
+                //alte Amazon Keys entfernen!
+                bav.removeCustomKeyword("amzn_b");
+                bav.removeCustomKeyword("amzn_h");
+                bav.removeCustomKeyword("amznslots");
+                bav.removeCustomKeyword("amznp");
+
+                bav.loadAd();
             }
 
             @Override
             public void onSuccess(DTBAdResponse dtbAdResponse) {
                 Map<String, List<String>> custParams = dtbAdResponse.getDefaultDisplayAdsRequestCustomParams();
+
+                ///testing
                 Log.e("AdError", "Oops banner ad loaded" );
-                myTextView.setText(custParams.toString());
-                //bav.addCustomKeywords("test", "true");
+                myn++;
+                mytext = mytext + myn + custParams.toString();
+                myTextView.setText(mytext);
+                bav.addCustomKeywords("test", "true");
+                /////
+
+                //alte Amazon Keys entfernen!
+                bav.removeCustomKeyword("amzn_b");
+                bav.removeCustomKeyword("amzn_h");
+                bav.removeCustomKeyword("amznslots");
+                bav.removeCustomKeyword("amznp");
+
+                for (Map.Entry<String, List<String>> entry : custParams.entrySet())
+                {
+                    Log.e("AdError",entry.getKey() + "/" + entry.getValue().get(1));
+                    bav.addCustomKeywords(entry.getKey(), entry.getValue().get(1));
+
+                }
+
+
                 //Loop through custParams and forward the targeting to your ad server
+                bav.loadAd();
             }
         });
 
-        //Adnx Placement initialisieren
-        this.bav = new BannerAdView(this);
-        this.bav.setInventoryCodeAndMemberID(7823, "adtechnology.axelspringer.de-app-test-mediation_index-mrec");
-        bav.addCustomKeywords("test", "true");
-        this.bav.setAdSize(300, 250);
-        this.bav.setShouldServePSAs(true);
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.my_adspot);
-        layout.addView(this.bav);
+
+
+
     }
 
     /*
