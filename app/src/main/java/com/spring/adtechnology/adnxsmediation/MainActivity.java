@@ -67,11 +67,11 @@ public class MainActivity extends AppCompatActivity {
                 myTextView.setText(mytext);
 
                 //alte Amazon Keys entfernen!
-                bav.removeCustomKeyword("amzn_b");
+                /*bav.removeCustomKeyword("amzn_b");
                 bav.removeCustomKeyword("amzn_h");
                 bav.removeCustomKeyword("amznslots");
                 bav.removeCustomKeyword("amznp");
-
+*/
                 bav.loadAd();
             }
 
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 myn++;
                 mytext = mytext + myn + custParams.toString();
                 myTextView.setText(mytext);
-                bav.addCustomKeywords("test", "true");
+
                 /////
 
                 //alte Amazon Keys entfernen!
@@ -95,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
 
                 for (Map.Entry<String, List<String>> entry : custParams.entrySet())
                 {
-                    Log.e("AdError",entry.getKey() + "/" + entry.getValue().get(1));
-                    bav.addCustomKeywords(entry.getKey(), entry.getValue().get(1));
+                    Log.e("AdError",entry.getKey() + "/" + entry.getValue().get(0));
+                    //bav.addCustomKeywords(entry.getKey(), entry.getValue().get(1));
 
                 }
 
