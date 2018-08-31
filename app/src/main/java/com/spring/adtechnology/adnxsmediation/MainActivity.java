@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         this.bav = new BannerAdView(this);
         bav.setAutoRefreshInterval(0);
         this.bav.setInventoryCodeAndMemberID(7823, "adtechnology.axelspringer.de-app-test-mediation_index-mrec");
-        bav.addCustomKeywords("test", "true");
+        //bav.addCustomKeywords("test", "true");
         this.bav.setAdSize(300, 250);
         this.bav.setShouldServePSAs(true);
         LinearLayout layout = (LinearLayout) findViewById(R.id.my_adspot);
@@ -67,11 +67,11 @@ public class MainActivity extends AppCompatActivity {
                 myTextView.setText(mytext);
 
                 //alte Amazon Keys entfernen!
-                /*bav.removeCustomKeyword("amzn_b");
+                bav.removeCustomKeyword("amzn_b");
                 bav.removeCustomKeyword("amzn_h");
                 bav.removeCustomKeyword("amznslots");
                 bav.removeCustomKeyword("amznp");
-*/
+
                 bav.loadAd();
             }
 
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 for (Map.Entry<String, List<String>> entry : custParams.entrySet())
                 {
                     Log.e("AdError",entry.getKey() + "/" + entry.getValue().get(0));
-                    //bav.addCustomKeywords(entry.getKey(), entry.getValue().get(1));
+                    bav.addCustomKeywords(entry.getKey(), entry.getValue().get(0));
 
                 }
 
