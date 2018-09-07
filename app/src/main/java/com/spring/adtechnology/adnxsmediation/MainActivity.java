@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     //used in different functions, represents a single ad slot
     private BannerAdView bav;
+    public InterstitialAdView iav;
     private DTBAdRequest loader;
     private TextView myTextView;
     private String mytext;
@@ -37,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         myTextView = (TextView) findViewById(R.id.mytext);
         myTextView.setText("My Awesome Text");
+        /////////////////////////////////////Amazonconfig/////////////////////////////////////////
         AdRegistration.getInstance("7c71c64f8b454da7aa4705963ae6e40f", getApplicationContext());
-
         AdRegistration.enableTesting(true);
         AdRegistration.enableLogging(true);
 
-        //Adnx Placement initialisieren
+        ////////////////////////////////Adnx Banner Placement initialisieren//////////////////////
         this.bav = new BannerAdView(this);
         bav.setAutoRefreshInterval(0);
         this.bav.setInventoryCodeAndMemberID(7823, "adtechnology.axelspringer.de-app-test-mediation_index-mrec");
@@ -50,18 +51,17 @@ public class MainActivity extends AppCompatActivity {
         this.bav.setAdSize(300, 250);
         this.bav.setShouldServePSAs(true);
         LinearLayout layout = (LinearLayout) findViewById(R.id.my_adspot);
-        layout.addView(this.bav);
+        //layout.addView(this.bav);
 
+        /////////////////////////////////Amazon initialisieren///////////////////////////////////
         loader = new DTBAdRequest();
         loader.setSizes(new DTBAdSize(300, 250,"63c4c4c6-1e0b-4666-b8cd-7994163e0552"));
         loader.setAutoRefresh();
         mytext = "My Awesome Failure ";
-        loader.loadAd(new DTBAdCallback() {
+        /*loader.loadAd(new DTBAdCallback() {
             @Override
             public void onFailure(AdError adError) {
                 Log.e("AdError", "Oops banner ad load has failed: " + adError.getMessage());
-                /**Please implement the logic to send ad request without our parameters if you want to
-                 show ads from other ad networks when Amazon ad request fails**/
                 myn++;
                 mytext = mytext + myn + adError.getMessage();
                 myTextView.setText(mytext);
@@ -104,10 +104,49 @@ public class MainActivity extends AppCompatActivity {
                 //Loop through custParams and forward the targeting to your ad server
                 bav.loadAd();
             }
-        });
+        });*/
 
+        ////////////////////////////Interstitial Test
+        //InterstitialAdView iav = new InterstitialAdView(this);
+        //iav.setInventoryCodeAndMemberID(7823, "adtechnology.axelspringer.de-app-test-mediation_index-inpage");
+        //AppCompatActivity that = this;
+        /*iav.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded(AdView adView) {
+                Log.d("onAdLoaded", "T-------------------------------------------------------------------------he ad has loaded, now we can show it...");
+            }
 
+            @Override
+            public void onAdLoaded(NativeAdResponse nativeAdResponse) {
 
+            }
+
+            @Override
+            public void onAdRequestFailed(AdView adView, ResultCode resultCode) {
+                Log.d("onAdRequestFailed", "N--------------------------------------------------------------ot sure why the ad request failed; try again? Return code ==> " + resultCode);
+            }
+
+            @Override
+            public void onAdExpanded(AdView adView) {
+
+            }
+
+            @Override
+            public void onAdCollapsed(AdView adView) {
+
+            }
+
+            @Override
+            public void onAdClicked(AdView adView) {
+
+            }
+
+            @Override
+            public void onAdClicked(AdView adView, String s) {
+
+            }
+        });*/
+        //iav.loadAd();
 
 
     }
