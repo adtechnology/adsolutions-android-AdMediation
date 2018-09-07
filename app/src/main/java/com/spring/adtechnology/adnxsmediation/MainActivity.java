@@ -107,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
         });*/
 
         ////////////////////////////Interstitial Test
-        //InterstitialAdView iav = new InterstitialAdView(this);
-        //iav.setInventoryCodeAndMemberID(7823, "adtechnology.axelspringer.de-app-test-mediation_index-inpage");
+        InterstitialAdView iav = new InterstitialAdView(this);
+        iav.setInventoryCodeAndMemberID(7823, "adtechnology.axelspringer.de-app-test-mediation_index-inpage");
         //AppCompatActivity that = this;
-        /*iav.setAdListener(new AdListener() {
+        iav.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded(AdView adView) {
                 Log.d("onAdLoaded", "T-------------------------------------------------------------------------he ad has loaded, now we can show it...");
@@ -145,8 +145,8 @@ public class MainActivity extends AppCompatActivity {
             public void onAdClicked(AdView adView, String s) {
 
             }
-        });*/
-        //iav.loadAd();
+        });
+        iav.loadAd();
 
 
     }
