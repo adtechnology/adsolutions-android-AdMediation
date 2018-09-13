@@ -32,5 +32,6 @@ dependencies {
     //needed for appnexus + mediation
     implementation 'com.appnexus.opensdk:appnexus-sdk:[4,5)'
     implementation 'com.appnexus.opensdk.mediatedviews:appnexus-googleplay-mediation:[4,5)'
+    implementation 'com.google.android.gms:play-services-ads:15.0.0'
     implementation project(':DTBAndroidSDK-7.4.2')
 }
