@@ -73,7 +73,7 @@ public class MediatedBannerAdView extends BannerAdView {
         return true;
     }
     /*
-     *  if not set, there will be no "Amazon Headerbidding", so no Amazon Keys will be transmitted
+     *  if not set, there will be no "Amazon Headerbidding", so no Amazon Keywords will be transmitted
      */
     public boolean setAmazonUUID(String uuid){
 

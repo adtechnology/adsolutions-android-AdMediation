@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         /////////////////////////////////////Amazonconfig/////////////////////////////////////////
         AdRegistration.getInstance("7c71c64f8b454da7aa4705963ae6e40f", getApplicationContext());
-        AdRegistration.enableTesting(true);
+        AdRegistration.enableTesting(true); //not for live
         AdRegistration.enableLogging(true);
 
         //Erstellung des MediatedBannerAdView:
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         this.bav = new MediatedBannerAdView(this, "63c4c4c6-1e0b-4666-b8cd-7994163e0552");
         this.bav.setInventoryCodeAndMemberID(7823, "adtechnology.axelspringer.de-app-test-mediation_index-mrec");
         this.bav.setAdSize(300, 250);
+        //use .setAdSizes() to add multiple Sizes
         this.bav.setShouldServePSAs(true);
         LinearLayout layout = (LinearLayout) findViewById(R.id.my_adspot);
         layout.addView(this.bav);
