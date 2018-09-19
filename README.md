@@ -1,6 +1,6 @@
 # adsolutions-android-AdMediation
 Sample Project to showcase Appnexus Mediation and Amazon Prebidding. 
-The projects also provides the class "MediatedBannerAdView" combining Amazon Prebidding and Appnexus' BannerAdview, only a Amazon UUID has to be provided additionally.
+The projects also provides the class "MediatedBannerAdView" combining Amazon Prebidding and Appnexus' BannerAdview
 
 needed libs:
 Appnexus SDK                      com.appnexus.opensdk:appnexus-sdk
