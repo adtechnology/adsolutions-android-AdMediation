@@ -22,13 +22,13 @@ https://wiki.appnexus.com/display/sdk/Show+Banners
 
 **Data/Parameter:**
 
-Amazon Appkey:                --\&gt; provided by Adtechnology/Media Impact Programmatic
+Amazon Appkey:                --> provided by Adtechnology/Media Impact Programmatic
 
-Amazon UUID:                  --\&gt; provided by Adtechnology/Media Impact Programmatic
+Amazon UUID:                  --> provided by Adtechnology/Media Impact Programmatic
 
-inventoryCode/Placementcode:  --\&gt; provided by Adtechnology/possibly CMS (like e.g. bild.de-app\_android\_phone-auto\_index-banner)
+inventoryCode/Placementcode:  --> provided by Adtechnology/possibly CMS (like e.g. bild.de-app\_android\_phone-auto\_index-banner)
 
-AdSizes                       --\&gt; provided by Adtechnology
+AdSizes                       --> provided by Adtechnology
 
 **# Todo**
 
